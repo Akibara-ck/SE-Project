@@ -30,22 +30,6 @@ git submodule update --init
 
 ### 2. Setup Environment Variables
 
-#### Docker
-Copy the example env file and rename it:
-
-```bash
-cp docker.env.example docker.env
-```
-
-Then open `docker.env` and fill in your values:
-
-```env
-FE_DIR=./frontend
-BE_DIR=./backend
-# ... other variables
-```
-
-> ⚠️ Never commit `docker.env` to git — it contains sensitive values.
 
 #### Backend
 Copy the example config file and rename it:
@@ -74,7 +58,7 @@ Then open `frontend/.env.local` and fill in your values.
 Starts the app with **live file watching** (auto-sync on file changes):
 
 ```bash
-docker compose --env-file docker.env -f docker-compose-dev.yaml up --watch
+docker compose -f docker-compose-dev.yaml up --watch
 ```
 
 ### 🚀 Production
@@ -82,7 +66,7 @@ docker compose --env-file docker.env -f docker-compose-dev.yaml up --watch
 Starts the app in production mode:
 
 ```bash
-docker compose --env-file docker.env -f docker-compose-prod.yaml up
+docker compose -f docker-compose-prod.yaml up
 ```
 
 ---

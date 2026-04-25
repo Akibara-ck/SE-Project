@@ -3,24 +3,24 @@ name: SE-Prod
 services:
   frontend:
     build:
-      context: ${FE_DIR}
+      context: ./frontend
       dockerfile: Dockerfile.prod
     ports:
       - "3000:3000"
     depends_on:
       - backend
     env_file:
-      - ${FE_DIR}/.env.local
+      - ./frontend/.env.local
     environment:
       - NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
       - BACKEND_URL=http://backend:5000
   backend:
     build:
-      context: ${BE_DIR}
+      context: ./backend
       dockerfile: Dockerfile.prod
     ports:
       - "5000:5000"
     env_file:
-      - ${BE_DIR}/config/config.env
+      - ./backend/config/config.env
     environment:
       - NODE_ENV=production
