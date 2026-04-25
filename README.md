@@ -16,8 +16,21 @@
 
 ## Getting Started
 
-### 1. Setup Environment Variables
+### 1. Clone the Repository
 
+After cloning the repo, run the following to fetch submodule files:
+
+```bash
+git submodule update --init
+```
+
+> ⚠️ Without this step, `frontend/` and `backend/` folders will be empty.
+
+---
+
+### 2. Setup Environment Variables
+
+#### Docker
 Copy the example env file and rename it:
 
 ```bash
@@ -33,6 +46,24 @@ BE_DIR=./backend
 ```
 
 > ⚠️ Never commit `docker.env` to git — it contains sensitive values.
+
+#### Backend
+Copy the example config file and rename it:
+
+```bash
+cp backend/config/config.env.example backend/config/config.env
+```
+
+Then open `backend/config/config.env` and fill in your values.
+
+#### Frontend
+Copy the example env file and rename it:
+
+```bash
+cp frontend/example.env.local frontend/.env.local
+```
+
+Then open `frontend/.env.local` and fill in your values.
 
 ---
 
