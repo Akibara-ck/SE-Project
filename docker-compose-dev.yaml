@@ -1,0 +1,50 @@
+name: SE-Dev
+
+services:
+  frontend:
+    build:
+      context: ${FE_DIR}
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    env_file:
+      - ${FE_DIR}/.env.local
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
+      - BACKEND_URL=http://backend:5000
+    develop:
+      watch:
+        - action: sync          # sync files without rebuilding
+          path: ${FE_DIR}/src
+          target: /app/src
+        - action: rebuild       # rebuild image when these change
+          path: ${FE_DIR}/package.json
+    networks:
+      - se-network
+    
+  backend:
+    build:
+      context: ${BE_DIR}
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - ${BE_DIR}/config/config.env
+    develop:
+      watch:
+        - action: sync          # sync files without rebuilding
+          path: ${BE_DIR}
+          target: /app
+          ignore: "**/node_modules/**"
+        - action: rebuild       # rebuild image when these change
+          path: ${BE_DIR}/package.json
+    networks:
+      - se-network
+
+networks:
+  se-network:
+    driver: bridge

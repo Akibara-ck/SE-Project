@@ -1,0 +1,8 @@
+[submodule "SE-BE"]
+	path = SE-BE
+	url = https://github.com/2110503-CEDT68/se-project-be-68-2-anumafia.git
+	branch = docker
+[submodule "SE-FE"]
+	path = SE-FE
+	url = https://github.com/2110503-CEDT68/se-project-fe-68-2-anumafia.git
+	branch = docker
