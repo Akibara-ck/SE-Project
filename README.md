@@ -49,6 +49,33 @@ cp frontend/example.env.local frontend/.env.local
 
 Then open `frontend/.env.local` and fill in your values.
 
+#### Frontend Next.js Config
+Make sure `next.config.ts` has `output: "standalone"` set — this is required for the Docker build to work correctly:
+
+```ts
+const nextConfig: NextConfig = {
+  output: "standalone",
+};
+```
+
+> ⚠️ Without this, the Docker container will not run the app correctly.
+
+---
+
+### 3. Generate package-lock.json
+
+Required for both frontend and backend before running Docker. This generates the lockfile **without** installing `node_modules` locally:
+
+```bash
+cd frontend
+npm install --package-lock-only
+cd ../backend
+npm install --package-lock-only
+cd ..
+```
+
+> ⚠️ Without `package-lock.json` in each service, the Docker build will fail.
+
 ---
 
 ## Running the App
@@ -58,7 +85,7 @@ Then open `frontend/.env.local` and fill in your values.
 Starts the app with **live file watching** (auto-sync on file changes):
 
 ```bash
-docker compose -f docker-compose-dev.yaml up --watch
+docker compose --env-file docker.env -f docker-compose-dev.yaml up --watch
 ```
 
 ### 🚀 Production
@@ -66,7 +93,7 @@ docker compose -f docker-compose-dev.yaml up --watch
 Starts the app in production mode:
 
 ```bash
-docker compose -f docker-compose-prod.yaml up
+docker compose --env-file docker.env -f docker-compose-prod.yaml up
 ```
 
 ---
