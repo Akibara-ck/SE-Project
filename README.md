@@ -8,8 +8,7 @@
 │   └── Dockerfile
 ├── backend/
 │   └── Dockerfile
-├── docker-compose.yaml
-└── docker.env.example
+└── docker-compose.yaml
 ```
 
 ---
@@ -85,7 +84,7 @@ cd ..
 Starts the app with **live file watching** (auto-sync on file changes):
 
 ```bash
-docker compose --env-file docker.env -f docker-compose-dev.yaml up --watch
+docker compose -f docker-compose-dev.yaml up --watch
 ```
 
 ### 🚀 Production
@@ -93,7 +92,7 @@ docker compose --env-file docker.env -f docker-compose-dev.yaml up --watch
 Starts the app in production mode:
 
 ```bash
-docker compose --env-file docker.env -f docker-compose-prod.yaml up
+docker compose -f docker-compose-prod.yaml up
 ```
 
 ---
