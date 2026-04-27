@@ -1,8 +1,8 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/2110503-CEDT68/se-project-be-68-2-anumafia.git
-	branch = docker
+	branch = main
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/2110503-CEDT68/se-project-fe-68-2-anumafia.git
-	branch = docker
+	branch = main
