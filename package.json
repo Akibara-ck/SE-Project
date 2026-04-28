@@ -1,0 +1,23 @@
+{
+  "name": "se-project",
+  "version": "1.0.0",
+  "description": "```\r .\r ├── frontend/\r │   └── Dockerfile\r ├── backend/\r │   └── Dockerfile\r └── docker-compose.yaml\r ```",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akibara-ck/SE-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Akibara-ck/SE-Project/issues"
+  },
+  "homepage": "https://github.com/Akibara-ck/SE-Project#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0"
+  }
+}
